@@ -1,3 +1,9 @@
+mod ship;
+
 fn main() {
-    println!("Hello, world!");
+    let rocket = ship::Ship {
+        name: String::from("test"),
+    };
+
+    println!("{}", rocket.name);
 }
