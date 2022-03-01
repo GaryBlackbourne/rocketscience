@@ -1,4 +1,4 @@
-use crate::models::part;
+use super::part;
 use std::vec::Vec;
 
 pub struct Ship {
@@ -12,5 +12,9 @@ impl Ship {
             name: String::from(name),
             parts: Vec::new(),
         }
+    }
+
+    pub fn rename(&mut self, newname: &str) {
+        self.name = String::from(newname);
     }
 }
