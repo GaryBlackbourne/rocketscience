@@ -1,9 +1,7 @@
-mod ship;
+mod models;
 
 fn main() {
-    let rocket = ship::Ship {
-        name: String::from("test"),
-    };
+    let rocket = models::Ship::new("Test");
 
     println!("{}", rocket.name);
 }
