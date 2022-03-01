@@ -7,9 +7,9 @@ pub struct Ship {
 }
 
 impl Ship {
-    pub fn new(name: &str) -> Ship {
+    pub fn new(name: String) -> Ship {
         Ship {
-            name: String::from(name),
+            name,
             parts: Vec::new(),
         }
     }
