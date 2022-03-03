@@ -1,3 +1,4 @@
+use super::ListShips;
 use crate::actions::MainMenu;
 use crate::models::Ship;
 use crate::Executable;
@@ -28,6 +29,6 @@ impl Executable for EditShip {
 
         shipyard[selection].rename(new_name);
 
-        Box::new(MainMenu)
+        Box::new(ListShips)
     }
 }

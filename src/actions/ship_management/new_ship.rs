@@ -1,4 +1,4 @@
-use crate::actions::MainMenu;
+use super::ListShips;
 use crate::models::Ship;
 use crate::{models, Executable};
 use dialoguer::theme::ColorfulTheme;
@@ -17,6 +17,6 @@ impl Executable for NewShip {
         println!("{} was created!", rocket.name);
         shipyard.push(rocket);
 
-        Box::new(MainMenu)
+        Box::new(ListShips)
     }
 }

@@ -1,3 +1,4 @@
+use super::ListShips;
 use crate::actions::MainMenu;
 use crate::models::Ship;
 use crate::Executable;
@@ -22,6 +23,6 @@ impl Executable for DisassembleShip {
             .unwrap();
 
         println!("{} was disassembled!", shipyard.remove(selection).name);
-        Box::new(MainMenu)
+        Box::new(ListShips)
     }
 }
