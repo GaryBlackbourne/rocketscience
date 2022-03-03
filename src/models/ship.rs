@@ -14,7 +14,7 @@ impl Ship {
         }
     }
 
-    pub fn rename(&mut self, newname: &str) {
-        self.name = String::from(newname);
+    pub fn rename(&mut self, new_name: String) {
+        self.name = new_name;
     }
 }
