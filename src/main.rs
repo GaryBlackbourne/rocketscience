@@ -33,6 +33,11 @@ fn main() {
                 }
             }
             "Disassemble ship" => {
+                if shipyard.is_empty() {
+                    println!("Shipyard is empty!");
+                    continue;
+                }
+
                 let ship_list: Vec<String> =
                     shipyard.iter().map(|ship| ship.name.clone()).collect();
 
