@@ -30,6 +30,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "coord_2d"
+version = "0.3.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2f5d80027c28c83cf5631e8a9c42f2d8b8fcbda6cb8eb420c89a7bf812ec3ad2"
+
+[[package]]
 name = "dialoguer"
 version = "0.10.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -113,6 +119,7 @@ dependencies = [
 name = "rocketscience"
 version = "0.1.0"
 dependencies = [
+ "coord_2d",
  "dialoguer",
 ]
 

@@ -1,5 +1,4 @@
 use super::ListShips;
-use crate::models::Ship;
 use crate::{models, Executable};
 use dialoguer::theme::ColorfulTheme;
 use dialoguer::Input;
@@ -7,7 +6,7 @@ use dialoguer::Input;
 pub struct NewShip;
 
 impl Executable for NewShip {
-    fn execute(&self, shipyard: &mut Vec<Ship>) -> Box<dyn Executable> {
+    fn execute(&self, session: &mut crate::store::Session) -> Box<dyn Executable> {
         let name: String = Input::with_theme(&ColorfulTheme::default())
             .with_prompt("Ships name?")
             .interact_text()
@@ -15,7 +14,7 @@ impl Executable for NewShip {
 
         let rocket = models::Ship::new(name);
         println!("{} was created!", rocket.name);
-        shipyard.push(rocket);
+        session.shipyard.push(rocket);
 
         Box::new(ListShips)
     }

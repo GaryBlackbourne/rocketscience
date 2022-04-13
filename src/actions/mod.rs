@@ -1,5 +1,5 @@
 pub trait Executable {
-    fn execute(&self, shipyard: &mut Vec<crate::models::Ship>) -> Box<dyn Executable>;
+    fn execute(&self, session: &mut crate::store::Session) -> Box<dyn Executable>;
 }
 
 mod menu;
