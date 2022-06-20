@@ -3,6 +3,7 @@ pub trait Executable {
 }
 
 mod menu;
+mod ship_building;
 mod ship_management;
 
 // Public interface of the module
