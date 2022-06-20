@@ -28,4 +28,24 @@ impl Ship {
 
         Ok(self.grid.get(&coord).unwrap())
     }
+
+    pub fn get_size(&self) -> (Coord, Coord) {
+        let mut min_coord = Coord::new(0, 0);
+        let mut max_coord = Coord::new(0, 0);
+
+        for grid_coord in self.grid.keys() {
+            min_coord = min_coord.pairwise_min(*grid_coord);
+            max_coord = max_coord.pairwise_max(*grid_coord);
+        }
+
+        (min_coord, max_coord)
+    }
+
+    pub fn get_part(&self, coord: Coord) -> Result<&Part, &'static str> {
+        if !self.grid.contains_key(&coord) {
+            return Err("Coord is empty");
+        };
+
+        Ok(self.grid.get(&coord).unwrap())
+    }
 }
