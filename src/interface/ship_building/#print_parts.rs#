@@ -1,0 +1,12 @@
+use super::ShipBuilding;
+use crate::store::Session;
+use crate::Executable;
+use coord_2d::Coord;
+
+pub struct PrintParts;
+
+impl Executable for PrintParts {
+    fn execute(&self, session: &mut Session) -> Box<dyn Executable> {
+        Box::new(ShipBuilding)
+    }
+}

@@ -1,0 +1,11 @@
+use super::ListShips;
+use crate::{models, Executable};
+use dialoguer::theme::ColorfulTheme;
+use dialoguer::Input;
+
+pub struct NewShip;
+
+impl Executable for NewShip {
+    fn execute(&self, session: &mut crate::store::Session) -> Box<dyn Executable> {
+    }
+}

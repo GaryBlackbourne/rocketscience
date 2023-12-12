@@ -1,13 +1,14 @@
-mod actions;
+mod interface;
 mod models;
 
 mod store {
-    use crate::models;
+    use crate::models::Ship;
 
     pub struct Session {
-        pub shipyard: Vec<models::Ship>,
+        pub shipyard: Vec<Ship>,
         current_ship: usize,
     }
+
 
     impl Session {
         pub fn new() -> Session {
@@ -17,25 +18,31 @@ mod store {
             }
         }
 
-        pub fn current_ship(&mut self) -> &mut crate::models::Ship {
+        pub fn current_ship(&mut self) -> &mut Ship {
             &mut self.shipyard[self.current_ship]
         }
 
-        pub fn next_round(&mut self) {
+        pub fn _next_round(&mut self) {
             if self.shipyard.len() > 0 {
                 self.current_ship = (self.current_ship + 1) % self.shipyard.len();
             }
         }
+
     }
 }
 
-use actions::Executable;
+use interface::{Executable, MainMenu};
+use store::Session;
 
-fn main() {
-    let mut session = store::Session::new();
-    let mut action: Box<dyn actions::Executable> = Box::new(actions::MainMenu);
+fn main() -> Result<(), ()> {
+
+    let mut session = Session::new();
+    let mut menu = MainMenu::new();
 
     loop {
-        action = action.execute(&mut session);
+        menu.execute(&mut session);
+        if menu.exit() {
+            return Ok(());
+        }
     }
 }
