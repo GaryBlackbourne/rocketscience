@@ -6,7 +6,7 @@ mod store {
 
     pub struct Session {
         pub shipyard: Vec<Ship>,
-        current_ship: usize,
+        index: usize // current ship index, implements a circular buffer
     }
 
 
@@ -14,17 +14,21 @@ mod store {
         pub fn new() -> Session {
             Session {
                 shipyard: Vec::new(),
-                current_ship: 0,
+                index: 0,
             }
         }
 
-        pub fn current_ship(&mut self) -> &mut Ship {
-            &mut self.shipyard[self.current_ship]
+        pub fn current_ship(&mut self) -> Option<&mut Ship> {
+            if self.shipyard.is_empty() {
+                return None;
+            } else {
+                return Some(&mut self.shipyard[self.index])
+            }
         }
 
         pub fn _next_round(&mut self) {
             if self.shipyard.len() > 0 {
-                self.current_ship = (self.current_ship + 1) % self.shipyard.len();
+                self.index = (self.index + 1) % self.shipyard.len();
             }
         }
 

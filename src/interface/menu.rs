@@ -55,13 +55,13 @@ impl Executable for MainMenu {
             _ => panic!("invalid input in main menu")
         };
 
-        match self.state {
+        let _ = match self.state {
             MainMenuState::Exit => return,
             MainMenuState::NewShip => ship_management::new_ship(session),
             MainMenuState::ListShips => ship_management::list_ship(session),
             MainMenuState::DisassembleShip => ship_management::disassemble_ship(session),
             MainMenuState::RenameShip => ship_management::edit_ship(session),
             MainMenuState::StartGame => return, // todo
-        }
+        };
     }
 }
