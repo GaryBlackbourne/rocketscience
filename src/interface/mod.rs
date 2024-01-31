@@ -1,5 +1,6 @@
+use crate::store::Session;
 pub trait Executable {
-    fn execute(&self, session: &mut crate::store::Session) -> Box<dyn Executable>;
+    fn execute(&mut self, session: &mut Session);
 }
 
 mod menu;
