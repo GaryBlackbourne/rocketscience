@@ -3,8 +3,10 @@ name = "rocketscience"
 version = "0.1.0"
 edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[[bin]]
+name = "client"
+path = "src/client/main.rs"
 
-[dependencies]
-coord_2d = "0.3.3"
-dialoguer = "0.10.0"
+[[bin]]
+name = "server"
+path = "src/server/main.rs"
